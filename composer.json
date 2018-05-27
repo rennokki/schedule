@@ -1,0 +1,36 @@
+{
+    "name": "rennokki/schedule",
+    "description": "Setting up schedule to Eloquent models with the ability of checking schedule based on time.",
+    "keywords": [
+        "schedule",
+        "scheduler",
+        "timetable",
+        "spatie",
+        "opening-hours",
+        "schedule",
+        "opening",
+        "hours"
+    ],
+    "homepage": "https://github.com/rennokki/schedule",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Renoki",
+            "email": "rennokki@gmail.com",
+            "homepage": "https://twitter.com/rennokki",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "nesbot/carbon": "^1.29.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rennokki\\Schedule\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev"
+}
