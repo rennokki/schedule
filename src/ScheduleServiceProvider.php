@@ -14,11 +14,11 @@ class ScheduleServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/config/schedule.php' => config_path('schedule.php'),
+            __DIR__.'/../config/schedule.php' => config_path('schedule.php'),
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/database/migrations/2018_05_19_135648_schedules.php' => database_path('migrations/2018_05_19_135648_schedules.php'),
+            __DIR__.'/../database/migrations/2018_05_19_135648_schedules.php' => database_path('migrations/2018_05_19_135648_schedules.php'),
         ], 'migration');
     }
 
