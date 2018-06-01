@@ -38,7 +38,7 @@ trait HasSchedule {
      */
     public function getExclusions()
     {
-        return ($this->hasSchedule()) ? $this->schedule()->first()->exclusions : null;
+        return ($this->hasSchedule()) ? ($this->schedule()->first()->exclusions) ?: [] : [];
     }
 
     /**
@@ -177,8 +177,7 @@ trait HasSchedule {
             $timeRanges = $this->getSchedule()[strtolower($this->getCarbonDateFromString($dateOrDay)->format('l'))];
 
             if($this->isExcludedOn($dateOrDay))
-                if(count($this->getExcludedTimeRangesOn($dateOrDay)) != 0)
-                    $timeRanges = $this->getExcludedTimeRangesOn($dateOrDay);
+                $timeRanges = $this->getExcludedTimeRangesOn($dateOrDay);
         }
 
         if(!$timeRanges)
