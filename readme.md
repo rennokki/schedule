@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/rennokki/schedule.svg?branch=master)](https://travis-ci.org/rennokki/schedule)
+[![Latest Stable Version](https://poser.pugx.org/rennokki/schedule/v/stable)](https://packagist.org/packages/rennokki/schedule)
+[![Total Downloads](https://poser.pugx.org/rennokki/schedule/downloads)](https://packagist.org/packages/rennokki/schedule)
+[![Monthly Downloads](https://poser.pugx.org/rennokki/schedule/d/monthly)](https://packagist.org/packages/rennokki/schedule)
+[![License](https://poser.pugx.org/rennokki/schedule/license)](https://packagist.org/packages/rennokki/schedule)
+
 # Schedule
 Schedule is a package that brings up features like "timetable" for a certain eloquent model.
 
