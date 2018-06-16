@@ -133,7 +133,17 @@ trait HasSchedule {
             return (bool) (count($this->getSchedule()[$dateOrDay]) > 0);
 
         if($dateOrDay instanceof $this->carbonInstance)
+        {
+            if($this->isExcludedOn($dateOrDay->toDateString()))
+            {
+                if(count($this->getExcludedTimeRangesOn($dateOrDay->toDateString())) != 0)
+                    return true;
+
+                return false;
+            }
+
             return (bool) (count($this->getSchedule()[strtolower($this->carbonInstance::parse($dateOrDay)->format('l'))]) > 0);
+        }
 
         if($this->isValidMonthDay($dateOrDay) || $this->isValidYearMonthDay($dateOrDay))
         {
@@ -170,7 +180,12 @@ trait HasSchedule {
             $timeRanges = $this->getSchedule()[$dateOrDay];
         
         if($dateOrDay instanceof $this->carbonInstance)
+        {
             $timeRanges = $this->getSchedule()[strtolower($this->carbonInstance::parse($dateOrDay)->format('l'))];
+
+            if($this->isExcludedOn($dateOrDay->toDateString()))
+                $timeRanges = $this->getExcludedTimeRangesOn($dateOrDay->toDateString());
+        }
 
         if($this->isValidMonthDay($dateOrDay) || $this->isValidYearMonthDay($dateOrDay))
         {
@@ -214,7 +229,12 @@ trait HasSchedule {
             $timeRanges = $this->getSchedule()[$dateOrDay];
         
         if($dateOrDay instanceof $this->carbonInstance)
+        {
             $timeRanges = $this->getSchedule()[strtolower($this->carbonInstance::parse($dateOrDay)->format('l'))];
+
+            if($this->isExcludedOn($dateOrDay->toDateString()))
+                $timeRanges = $this->getExcludedTimeRangesOn($dateOrDay->toDateString());
+        }
 
         if($this->isValidMonthDay($dateOrDay) || $this->isValidYearMonthDay($dateOrDay))
         {
@@ -249,7 +269,12 @@ trait HasSchedule {
             $timeRanges = $this->getSchedule()[$dateOrDay];
         
         if($dateOrDay instanceof $this->carbonInstance)
+        {
             $timeRanges = $this->getSchedule()[strtolower($this->carbonInstance::parse($dateOrDay)->format('l'))];
+
+            if($this->isExcludedOn($dateOrDay->toDateString()))
+                $timeRanges = $this->getExcludedTimeRangesOn($dateOrDay->toDateString());
+        }
 
         if($this->isValidMonthDay($dateOrDay) || $this->isValidYearMonthDay($dateOrDay))
         {
