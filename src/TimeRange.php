@@ -4,17 +4,18 @@ namespace Rennokki\Schedule;
 
 use Carbon\Carbon;
 
-class TimeRange {
-
+class TimeRange
+{
     protected $timeRangeString;
     protected $carbonInstance = Carbon::class;
 
     public function __construct($timeRangeString, $carbonInstance = null)
     {
         $this->timeRangeString = $timeRangeString;
-        
-        if($carbonInstance)
+
+        if ($carbonInstance) {
             $this->carbonInstance = $carbonInstance;
+        }
     }
 
     /**
@@ -38,8 +39,9 @@ class TimeRange {
      */
     public function isInTimeRange($hourMinute)
     {
-        if(!$this->isValidHourMinute($hourMinute))
+        if (! $this->isValidHourMinute($hourMinute)) {
             return false;
+        }
 
         list($hour, $minute) = explode(':', $hourMinute);
         $hour = (int) $hour;
@@ -71,8 +73,9 @@ class TimeRange {
      */
     public function diffInHours()
     {
-        if(!$this->isValidTimeRange())
+        if (! $this->isValidTimeRange()) {
             return 0;
+        }
 
         return (int) $this->getStartCarbonInstance()->diffInHours($this->getEndCarbonInstance());
     }
@@ -82,8 +85,9 @@ class TimeRange {
      */
     public function diffInMinutes()
     {
-        if(!$this->isValidTimeRange())
+        if (! $this->isValidTimeRange()) {
             return 0;
+        }
 
         return (int) $this->getStartCarbonInstance()->diffInMinutes($this->getEndCarbonInstance());
     }
@@ -93,8 +97,9 @@ class TimeRange {
      */
     public function getStartHour()
     {
-        if(!$this->isValidTimeRange())
-            return null;
+        if (! $this->isValidTimeRange()) {
+            return;
+        }
 
         return (int) explode(':', $this->toArray()[0])[0];
     }
@@ -104,8 +109,9 @@ class TimeRange {
      */
     public function getStartMinute()
     {
-        if(!$this->isValidTimeRange())
-            return null;
+        if (! $this->isValidTimeRange()) {
+            return;
+        }
 
         return (int) explode(':', $this->toArray()[0])[1];
     }
@@ -115,8 +121,9 @@ class TimeRange {
      */
     public function getEndHour()
     {
-        if(!$this->isValidTimeRange())
-            return null;
+        if (! $this->isValidTimeRange()) {
+            return;
+        }
 
         return (int) explode(':', $this->toArray()[1])[0];
     }
@@ -126,8 +133,9 @@ class TimeRange {
      */
     public function getEndMinute()
     {
-        if(!$this->isValidTimeRange())
-            return null;
+        if (! $this->isValidTimeRange()) {
+            return;
+        }
 
         return (int) explode(':', $this->toArray()[1])[1];
     }
@@ -139,8 +147,9 @@ class TimeRange {
      */
     public function toArray()
     {
-        if(!$this->isValidTimeRange())
+        if (! $this->isValidTimeRange()) {
             return [];
+        }
 
         return (array) explode('-', $this->timeRangeString);
     }
