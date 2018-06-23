@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/rennokki/schedule.svg?branch=master)](https://travis-ci.org/rennokki/schedule)
 [![codecov](https://codecov.io/gh/rennokki/schedule/branch/master/graph/badge.svg)](https://codecov.io/gh/rennokki/schedule/branch/master)
+[![StyleCI](https://github.styleci.io/repos/134363104/shield?branch=master)](https://github.styleci.io/repos/134363104)
 [![Latest Stable Version](https://poser.pugx.org/rennokki/schedule/v/stable)](https://packagist.org/packages/rennokki/schedule)
 [![Total Downloads](https://poser.pugx.org/rennokki/schedule/downloads)](https://packagist.org/packages/rennokki/schedule)
 [![Monthly Downloads](https://poser.pugx.org/rennokki/schedule/d/monthly)](https://packagist.org/packages/rennokki/schedule)
