@@ -13,8 +13,7 @@ class Schedules extends Migration
      */
     public function up()
     {
-        Schema::create('schedules', function(Blueprint $table) {
-
+        Schema::create('schedules', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('model_id');
@@ -24,7 +23,6 @@ class Schedules extends Migration
             $table->text('exclusions')->nullable();
 
             $table->timestamps();
-
         });
     }
 

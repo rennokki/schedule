@@ -1,20 +1,20 @@
 <?php
-namespace Rennokki\Schedule\Test;
 
-use Orchestra\Testbench\TestCase as Orchestra;
+namespace Rennokki\Schedule\Test;
 
 use Rennokki\Schedule\Test\Models\User;
 use Rennokki\Schedule\Models\ScheduleModel;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {
     public function setUp()
     {
         parent::setUp();
-        
+
         $this->resetDatabase();
         $this->loadLaravelMigrations();
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->withFactories(__DIR__.'/../database/factories');
         $this->artisan('migrate', ['--database' => 'sqlite']);
     }
