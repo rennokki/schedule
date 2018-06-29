@@ -9,6 +9,13 @@ class TimeRange
     protected $timeRangeString;
     protected $carbonInstance = Carbon::class;
 
+    /**
+     * Create a new TimeRange instance.
+     * 
+     * @param string $timeRangeString
+     * @param Carbon $carbonInstance
+     * @return void
+     */
     public function __construct($timeRangeString, $carbonInstance = null)
     {
         $this->timeRangeString = $timeRangeString;
@@ -20,6 +27,8 @@ class TimeRange
 
     /**
      * Check if the string provided is a TimeRange formatted string.
+     * 
+     * @return bool
      */
     public function isValidTimeRange()
     {
@@ -28,6 +37,8 @@ class TimeRange
 
     /**
      * Check if the string provided is a valid hour:minute formatted string.
+     * 
+     * @return bool
      */
     public function isValidHourMinute($hourMinute)
     {
@@ -36,6 +47,9 @@ class TimeRange
 
     /**
      * Check if a specific hour:minute is in the timerange.
+     * 
+     * @param string $hourMinute The time in format hour:minute
+     * @return bool
      */
     public function isInTimeRange($hourMinute)
     {
@@ -54,6 +68,8 @@ class TimeRange
 
     /**
      * Get the start Carbon instance as 1st January 2018, and a specified hour.
+     * 
+     * @return Carbon
      */
     public function getStartCarbonInstance()
     {
@@ -62,6 +78,8 @@ class TimeRange
 
     /**
      * Get the end Carbon instance as 1st/2nd January 2018, at the right hour and minute.
+     * 
+     * @return Carbon
      */
     public function getEndCarbonInstance()
     {
@@ -70,6 +88,8 @@ class TimeRange
 
     /**
      * Difference in hours between the both ends.
+     * 
+     * @return int The difference, in hours.
      */
     public function diffInHours()
     {
@@ -82,6 +102,8 @@ class TimeRange
 
     /**
      * Difference in minutes between the both ends.
+     * 
+     * @return int The difference, in minutes.
      */
     public function diffInMinutes()
     {
@@ -94,6 +116,8 @@ class TimeRange
 
     /**
      * Get the hour of the starting part.
+     * 
+     * @return int
      */
     public function getStartHour()
     {
@@ -106,6 +130,8 @@ class TimeRange
 
     /**
      * Get the minute of the starting part.
+     * 
+     * @return int
      */
     public function getStartMinute()
     {
@@ -118,6 +144,8 @@ class TimeRange
 
     /**
      * Get the hour of the ending part.
+     * 
+     * @return int
      */
     public function getEndHour()
     {
@@ -130,6 +158,8 @@ class TimeRange
 
     /**
      * Get the minute of the ending part.
+     * 
+     * @return int
      */
     public function getEndMinute()
     {
@@ -144,6 +174,8 @@ class TimeRange
      * Get the time range in array format.
      * This will return something like ['08:00', '17:00']
      * Use get[Start|End][Hour|Minute]() method to get the hours as integers.
+     * 
+     * @return array
      */
     public function toArray()
     {

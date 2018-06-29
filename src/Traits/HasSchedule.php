@@ -16,6 +16,8 @@ trait HasSchedule
 
     /**
      * Returns a morphOne relationship class of the schedule.
+     * 
+     * @return morphOne The relatinship.
      */
     public function schedule()
     {
@@ -24,6 +26,8 @@ trait HasSchedule
 
     /**
      * Get the Schedule array or null if it doesn't have.
+     * 
+     * @return array|null The array with schedules or null.
      */
     public function getSchedule()
     {
@@ -32,6 +36,8 @@ trait HasSchedule
 
     /**
      * Get the Exclusions array or null if it doesn't have.
+     * 
+     * @return array The array with exclusions.
      */
     public function getExclusions()
     {
@@ -40,6 +46,8 @@ trait HasSchedule
 
     /**
      * Check if the model has a schedule set.
+     * 
+     * @return boolean If the binded model has a schedule already set.
      */
     public function hasSchedule()
     {
@@ -48,6 +56,9 @@ trait HasSchedule
 
     /**
      * Set a new schedule.
+     * 
+     * @param array $scheduleArray The array with schedules.
+     * @return array The schedule array.
      */
     public function setSchedule(array $scheduleArray = [])
     {
@@ -66,6 +77,9 @@ trait HasSchedule
 
     /**
      * Update the model's schedule.
+     * 
+     * @param array $scheduleArray The array with schedules that should be replaced.
+     * @return array The schedule array.
      */
     public function updateSchedule(array $scheduleArray)
     {
@@ -78,6 +92,9 @@ trait HasSchedule
 
     /**
      * Set exclusions.
+     * 
+     * @param array $exclusionsArray The array with exclusions.
+     * @return array The exclusions array.
      */
     public function setExclusions(array $exclusionsArray = [])
     {
@@ -94,6 +111,9 @@ trait HasSchedule
 
     /**
      * Update exclusions (alias for setExclusions).
+     * 
+     * @param array $exclusionsArray The array with exclusions.
+     * @return array The exclusions array.
      */
     public function updateExclusions(array $exclusionsArray)
     {
@@ -102,6 +122,8 @@ trait HasSchedule
 
     /**
      * Delete the schedule of this model.
+     * 
+     * @return bool Wether the schedule was deleted or not.
      */
     public function deleteSchedule()
     {
@@ -110,6 +132,8 @@ trait HasSchedule
 
     /**
      * Delete the exclusions of this model.
+     * 
+     * @return bool|array Wether the exclusions were cleared or not.
      */
     public function deleteExclusions()
     {
@@ -126,6 +150,9 @@ trait HasSchedule
 
     /**
      * Check if the model is available on a certain day/date.
+     * 
+     * @param string|Carbon|DateTime $dateOrDay The datetime, date or the day.
+     * @return bool Wether it is available on that day.
      */
     public function isAvailableOn($dateOrDay)
     {
@@ -162,6 +189,9 @@ trait HasSchedule
 
     /**
      * Check if the model is unavailable on a certain day/date.
+     *
+     * @param string|Carbon|DateTime $dateOrDay The datetime, date or the day.
+     * @return bool Wether it is unavailable on that day.
      */
     public function isUnavailableOn($dateOrDay)
     {
@@ -170,6 +200,10 @@ trait HasSchedule
 
     /**
      * Check if the model is available on a certain day/date and time.
+     * 
+     * @param string|Carbon|DateTime $dateOrDay The datetime, date or the day.
+     * @param string The time.
+     * @return bool Wether it is available on that day, at a certain time.
      */
     public function isAvailableOnAt($dateOrDay, $time)
     {
@@ -212,6 +246,10 @@ trait HasSchedule
 
     /**
      * Check if the model is unavailable on a certain day/date and time.
+     * 
+     * @param string|Carbon|DateTime $dateOrDay The datetime, date or the day.
+     * @param string The time.
+     * @return bool Wether it is unavailable on that day, at a certain time.
      */
     public function isUnavailableOnAt($dateOrDay, $time)
     {
@@ -220,6 +258,9 @@ trait HasSchedule
 
     /**
      * Get the amount of hours on a certain day.
+     * 
+     * @param string|Carbon|DateTime $dateOrDay The datetime, date or the day.
+     * @return int The amount of hours on that day.
      */
     public function getHoursOn($dateOrDay)
     {
@@ -261,6 +302,9 @@ trait HasSchedule
 
     /**
      * Get the amount of minutes on a certain day.
+     * 
+    * @param string|Carbon|DateTime $dateOrDay The datetime, date or the day.
+     * @return int The amount of minutes on that day.
      */
     public function getMinutesOn($dateOrDay)
     {
