@@ -6,6 +6,8 @@
 [![Monthly Downloads](https://poser.pugx.org/rennokki/schedule/d/monthly)](https://packagist.org/packages/rennokki/schedule)
 [![License](https://poser.pugx.org/rennokki/schedule/license)](https://packagist.org/packages/rennokki/schedule)
 
+[![Beerpay](https://beerpay.io/rennokki/schedule/badge.svg?style=beer-square)](https://beerpay.io/rennokki/schedule)  [![Beerpay](https://beerpay.io/rennokki/schedule/make-wish.svg?style=flat-square)](https://beerpay.io/rennokki/schedule?focus=wish)
+
 # Schedule
 Schedule is a package that brings up features like "timetable" for a certain eloquent model.
 
