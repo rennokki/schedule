@@ -1,6 +1,6 @@
 {
     "name": "rennokki/schedule",
-    "description": "Setting up schedule to Eloquent models with the ability of checking schedule based on time.",
+    "description": "Schedule is a Laravel package that binds a schedule to a model. Useful for apps that need to track schedules & timetables.",
     "keywords": [
         "schedule",
         "scheduler",
