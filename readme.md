@@ -56,7 +56,9 @@ $user->setSchedule([
 $user->hasSchedule(); // true
 ```
 
-Let's  say the user has its birthday on 1st March each year, so let's add this to an exclusions list. Adding to this, the first and the second day of Christmas is free for anyone, and let's add 1st May 2018 in our exclusions list. Note: 1st May 2018 will occur only once, it's not recurrent.
+Let's  say the user has its birthday on 1st March each year, so let's add this to an exclusions list. Adding to this, the first and the second day of Christmas is free for anyone, and let's add 1st May 2018 in our exclusions list. 
+
+Note: 1st May 2018 will occur only once, it's not recurrent.
 ```php
 $user->setExclusions([
     '03-01' => ['08:00-12:00'],
