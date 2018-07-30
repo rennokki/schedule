@@ -51,7 +51,7 @@ trait HasSchedule
      */
     public function hasSchedule(): bool
     {
-        return (bool) !is_null($this->schedule()->first());
+        return (bool) ! is_null($this->schedule()->first());
     }
 
     /**
