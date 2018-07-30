@@ -122,7 +122,7 @@ class TimeRange
     public function getStartHour(): ?int
     {
         if (! $this->isValidTimeRange()) {
-            return;
+            return null;
         }
 
         return (int) explode(':', $this->toArray()[0])[0];
@@ -136,7 +136,7 @@ class TimeRange
     public function getStartMinute(): ?int
     {
         if (! $this->isValidTimeRange()) {
-            return;
+            return null;
         }
 
         return (int) explode(':', $this->toArray()[0])[1];
@@ -150,7 +150,7 @@ class TimeRange
     public function getEndHour(): ?int
     {
         if (! $this->isValidTimeRange()) {
-            return;
+            return null;
         }
 
         return (int) explode(':', $this->toArray()[1])[0];
@@ -164,7 +164,7 @@ class TimeRange
     public function getEndMinute(): ?int
     {
         if (! $this->isValidTimeRange()) {
-            return;
+            return null;
         }
 
         return (int) explode(':', $this->toArray()[1])[1];
