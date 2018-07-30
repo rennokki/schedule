@@ -135,7 +135,7 @@ trait HasSchedule
      *
      * @return bool|array Wether the exclusions were cleared or not.
      */
-    public function deleteExclusions(): bool
+    public function deleteExclusions()
     {
         if (! $this->hasSchedule()) {
             return false;
