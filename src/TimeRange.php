@@ -30,9 +30,9 @@ class TimeRange
      *
      * @return bool
      */
-    public function isValidTimeRange()
+    public function isValidTimeRange(): bool
     {
-        return preg_match_all('/(([0-1])([0-9])|(2)([0-3])):([0-5])([0-9])-(([0-1])([0-9])|(2)([0-3])):([0-5])([0-9])/', $this->timeRangeString);
+        return (bool) preg_match_all('/(([0-1])([0-9])|(2)([0-3])):([0-5])([0-9])-(([0-1])([0-9])|(2)([0-3])):([0-5])([0-9])/', $this->timeRangeString);
     }
 
     /**
@@ -40,9 +40,9 @@ class TimeRange
      *
      * @return bool
      */
-    public function isValidHourMinute($hourMinute)
+    public function isValidHourMinute($hourMinute): bool
     {
-        return preg_match_all('/(([0-1])([0-9])|(2)([0-3])):([0-5])([0-9])/', $hourMinute);
+        return (bool) preg_match_all('/(([0-1])([0-9])|(2)([0-3])):([0-5])([0-9])/', $hourMinute);
     }
 
     /**
@@ -51,7 +51,7 @@ class TimeRange
      * @param string $hourMinute The time in format hour:minute
      * @return bool
      */
-    public function isInTimeRange($hourMinute)
+    public function isInTimeRange($hourMinute): bool
     {
         if (! $this->isValidHourMinute($hourMinute)) {
             return false;
@@ -91,10 +91,10 @@ class TimeRange
      *
      * @return int The difference, in hours.
      */
-    public function diffInHours()
+    public function diffInHours(): int
     {
         if (! $this->isValidTimeRange()) {
-            return 0;
+            return (int) 0;
         }
 
         return (int) $this->getStartCarbonInstance()->diffInHours($this->getEndCarbonInstance());
@@ -105,10 +105,10 @@ class TimeRange
      *
      * @return int The difference, in minutes.
      */
-    public function diffInMinutes()
+    public function diffInMinutes(): int
     {
         if (! $this->isValidTimeRange()) {
-            return 0;
+            return (int) 0;
         }
 
         return (int) $this->getStartCarbonInstance()->diffInMinutes($this->getEndCarbonInstance());
@@ -119,10 +119,10 @@ class TimeRange
      *
      * @return int
      */
-    public function getStartHour()
+    public function getStartHour(): ?int
     {
         if (! $this->isValidTimeRange()) {
-            return;
+            return null;
         }
 
         return (int) explode(':', $this->toArray()[0])[0];
@@ -133,10 +133,10 @@ class TimeRange
      *
      * @return int
      */
-    public function getStartMinute()
+    public function getStartMinute(): ?int
     {
         if (! $this->isValidTimeRange()) {
-            return;
+            return null;
         }
 
         return (int) explode(':', $this->toArray()[0])[1];
@@ -147,10 +147,10 @@ class TimeRange
      *
      * @return int
      */
-    public function getEndHour()
+    public function getEndHour(): ?int
     {
         if (! $this->isValidTimeRange()) {
-            return;
+            return null;
         }
 
         return (int) explode(':', $this->toArray()[1])[0];
@@ -161,10 +161,10 @@ class TimeRange
      *
      * @return int
      */
-    public function getEndMinute()
+    public function getEndMinute(): ?int
     {
         if (! $this->isValidTimeRange()) {
-            return;
+            return null;
         }
 
         return (int) explode(':', $this->toArray()[1])[1];
@@ -177,7 +177,7 @@ class TimeRange
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         if (! $this->isValidTimeRange()) {
             return [];

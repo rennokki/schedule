@@ -29,7 +29,7 @@ trait HasSchedule
      *
      * @return array|null The array with schedules or null.
      */
-    public function getSchedule()
+    public function getSchedule(): ?array
     {
         return ($this->hasSchedule()) ? $this->schedule()->first()->schedule : null;
     }
@@ -39,7 +39,7 @@ trait HasSchedule
      *
      * @return array The array with exclusions.
      */
-    public function getExclusions()
+    public function getExclusions(): array
     {
         return ($this->hasSchedule()) ? ($this->schedule()->first()->exclusions) ?: [] : [];
     }
@@ -49,9 +49,9 @@ trait HasSchedule
      *
      * @return bool If the binded model has a schedule already set.
      */
-    public function hasSchedule()
+    public function hasSchedule(): bool
     {
-        return $this->schedule()->first() != null;
+        return (bool) ! is_null($this->schedule()->first());
     }
 
     /**
@@ -125,7 +125,7 @@ trait HasSchedule
      *
      * @return bool Wether the schedule was deleted or not.
      */
-    public function deleteSchedule()
+    public function deleteSchedule(): bool
     {
         return (bool) $this->schedule()->delete();
     }
@@ -154,7 +154,7 @@ trait HasSchedule
      * @param string|Carbon|DateTime $dateOrDay The datetime, date or the day.
      * @return bool Wether it is available on that day.
      */
-    public function isAvailableOn($dateOrDay)
+    public function isAvailableOn($dateOrDay): bool
     {
         if (in_array($dateOrDay, Self::$availableDays)) {
             return (bool) (count($this->getSchedule()[$dateOrDay]) > 0);
@@ -193,7 +193,7 @@ trait HasSchedule
      * @param string|Carbon|DateTime $dateOrDay The datetime, date or the day.
      * @return bool Wether it is unavailable on that day.
      */
-    public function isUnavailableOn($dateOrDay)
+    public function isUnavailableOn($dateOrDay): bool
     {
         return (bool) ! $this->isAvailableOn($dateOrDay);
     }
@@ -205,7 +205,7 @@ trait HasSchedule
      * @param string The time.
      * @return bool Wether it is available on that day, at a certain time.
      */
-    public function isAvailableOnAt($dateOrDay, $time)
+    public function isAvailableOnAt($dateOrDay, $time): bool
     {
         $timeRanges = null;
 
@@ -251,7 +251,7 @@ trait HasSchedule
      * @param string The time.
      * @return bool Wether it is unavailable on that day, at a certain time.
      */
-    public function isUnavailableOnAt($dateOrDay, $time)
+    public function isUnavailableOnAt($dateOrDay, $time): bool
     {
         return (bool) ! $this->isAvailableOnAt($dateOrDay, $time);
     }
@@ -262,7 +262,7 @@ trait HasSchedule
      * @param string|Carbon|DateTime $dateOrDay The datetime, date or the day.
      * @return int The amount of hours on that day.
      */
-    public function getHoursOn($dateOrDay)
+    public function getHoursOn($dateOrDay): int
     {
         $totalHours = 0;
         $timeRanges = null;
@@ -306,7 +306,7 @@ trait HasSchedule
      * @param string|Carbon|DateTime $dateOrDay The datetime, date or the day.
      * @return int The amount of minutes on that day.
      */
-    public function getMinutesOn($dateOrDay)
+    public function getMinutesOn($dateOrDay): int
     {
         $totalMinutes = 0;
         $timeRanges = null;
@@ -347,7 +347,7 @@ trait HasSchedule
     /**
      * Get the time ranges for a particular excluded date.
      */
-    protected function getExcludedTimeRangesOn($date)
+    protected function getExcludedTimeRangesOn($date): array
     {
         foreach ($this->getExclusions() as $day => $timeRanges) {
             $carbonDay = $this->getCarbonDateFromString($day);
@@ -364,7 +364,7 @@ trait HasSchedule
     /**
      * Check if the model is excluded on a date.
      */
-    protected function isExcludedOn($date)
+    protected function isExcludedOn($date): bool
     {
         foreach ($this->getExclusions() as $day => $timeRanges) {
             $carbonDay = $this->getCarbonDateFromString($day);
@@ -381,7 +381,7 @@ trait HasSchedule
     /**
      * Check if the model is excluded on a date and time.
      */
-    protected function isExcludedOnAt($date, $time)
+    protected function isExcludedOnAt($date, $time): bool
     {
         foreach ($this->getExclusions() as $day => $timeRanges) {
             if ($this->isValidMonthDay($day) && $this->isValidMonthDay($date)) {
@@ -411,7 +411,7 @@ trait HasSchedule
     /**
      * Normalize the schedule array.
      */
-    protected function normalizeScheduleArray(array $scheduleArray)
+    protected function normalizeScheduleArray(array $scheduleArray): array
     {
         $finalScheduleArray = [];
 
@@ -445,7 +445,7 @@ trait HasSchedule
     /**
      * Normalize the exclusions array.
      */
-    protected function normalizeExclusionsArray($exclusionsArray)
+    protected function normalizeExclusionsArray($exclusionsArray): array
     {
         $finalExclusionsArray = [];
 
@@ -477,7 +477,7 @@ trait HasSchedule
         return (array) $finalExclusionsArray;
     }
 
-    protected function isValidMonthDay($dateString)
+    protected function isValidMonthDay($dateString): bool
     {
         try {
             $day = $this->carbonInstance::createFromFormat('m-d', $dateString);
@@ -485,10 +485,10 @@ trait HasSchedule
             return false;
         }
 
-        return $day && $day->format('m-d') === $dateString;
+        return (bool) ($day && $day->format('m-d') === $dateString);
     }
 
-    protected function isValidYearMonthDay($dateString)
+    protected function isValidYearMonthDay($dateString): bool
     {
         try {
             $day = $this->carbonInstance::createFromFormat('Y-m-d', $dateString);
@@ -496,7 +496,7 @@ trait HasSchedule
             return false;
         }
 
-        return $day && $day->format('Y-m-d') === $dateString;
+        return (bool) ($day && $day->format('Y-m-d') === $dateString);
     }
 
     protected function getCarbonDateFromString($dateString)
