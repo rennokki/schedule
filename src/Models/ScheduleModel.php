@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ScheduleModel extends Model
 {
     protected $table = 'schedules';
-    protected $fillable = [
-        'model_id', 'model_type', 'schedule', 'exclusions',
-    ];
+    protected $guarded = [];
     protected $casts = [
         'schedule' => 'array',
         'exclusions' => 'array',
