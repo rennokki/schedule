@@ -372,6 +372,11 @@ class ScheduleTest extends TestCase
         $this->assertEquals($this->user->getHoursOn('2018-05-31'), 12);
         $this->assertEquals($this->user->getHoursOn('2018-06-01'), 3);
         $this->assertEquals($this->user->getHoursOn('2018-06-02'), 0);
+
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-05-28'), 0);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-05-31'), 12);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-06-01'), 3);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-06-02'), 0);
     }
 
     public function testIsUnavailableOnExclusion()
@@ -400,6 +405,11 @@ class ScheduleTest extends TestCase
         $this->assertEquals($this->user->getHoursOn('2018-05-31'), 12);
         $this->assertEquals($this->user->getHoursOn('2018-06-01'), 3);
         $this->assertEquals($this->user->getHoursOn('2018-06-02'), 0);
+
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-05-28'), 0);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-05-31'), 12);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-06-01'), 3);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-06-02'), 0);
     }
 
     public function testIsAvailableOnAtExclusion()
@@ -456,6 +466,14 @@ class ScheduleTest extends TestCase
         $this->assertEquals($this->user->getHoursOn('saturday'), 0);
         $this->assertEquals($this->user->getHoursOn('sunday'), 0);
 
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('monday'), 4);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('tuesday'), 8);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('wednesday'), 1);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('thursday'), 0);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('friday'), 0);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('saturday'), 0);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('sunday'), 0);
+
         $this->assertEquals($this->user->getHoursOn('2018-05-28'), 4);
         $this->assertEquals($this->user->getHoursOn('2018-05-29'), 8);
         $this->assertEquals($this->user->getHoursOn('2018-05-30'), 1);
@@ -464,6 +482,14 @@ class ScheduleTest extends TestCase
         $this->assertEquals($this->user->getHoursOn('2018-06-02'), 0);
         $this->assertEquals($this->user->getHoursOn('2018-06-03'), 0);
 
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-05-28'), 4);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-05-29'), 8);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-05-30'), 1);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-05-31'), 0);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-06-01'), 0);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-06-02'), 0);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-06-03'), 0);
+
         $this->assertEquals($this->user->getHoursOn(Carbon::create(2018, 5, 28, 0, 0, 0)), 4);
         $this->assertEquals($this->user->getHoursOn(Carbon::create(2018, 5, 29, 0, 0, 0)), 8);
         $this->assertEquals($this->user->getHoursOn(Carbon::create(2018, 5, 30, 0, 0, 0)), 1);
@@ -471,6 +497,14 @@ class ScheduleTest extends TestCase
         $this->assertEquals($this->user->getHoursOn(Carbon::create(2018, 6, 1, 0, 0, 0)), 0);
         $this->assertEquals($this->user->getHoursOn(Carbon::create(2018, 6, 2, 0, 0, 0)), 0);
         $this->assertEquals($this->user->getHoursOn(Carbon::create(2018, 6, 3, 0, 0, 0)), 0);
+
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn(Carbon::create(2018, 5, 28, 0, 0, 0)), 4);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn(Carbon::create(2018, 5, 29, 0, 0, 0)), 8);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn(Carbon::create(2018, 5, 30, 0, 0, 0)), 1);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn(Carbon::create(2018, 5, 31, 0, 0, 0)), 0);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn(Carbon::create(2018, 6, 1, 0, 0, 0)), 0);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn(Carbon::create(2018, 6, 2, 0, 0, 0)), 0);
+        $this->assertEquals($this->user->schedule()->first()->getHoursOn(Carbon::create(2018, 6, 3, 0, 0, 0)), 0);
     }
 
     public function testGetMinutesOn()
@@ -495,6 +529,14 @@ class ScheduleTest extends TestCase
         $this->assertEquals($this->user->getMinutesOn('saturday'), 0);
         $this->assertEquals($this->user->getMinutesOn('sunday'), 0);
 
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn('monday'), 4 * 60);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn('tuesday'), 8 * 60);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn('wednesday'), 1 * 60);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn('thursday'), 0);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn('friday'), 0);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn('saturday'), 0);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn('sunday'), 0);
+
         $this->assertEquals($this->user->getMinutesOn('2018-05-28'), 0);
         $this->assertEquals($this->user->getMinutesOn('2018-05-29'), 8 * 60);
         $this->assertEquals($this->user->getMinutesOn('2018-05-30'), 1 * 60);
@@ -503,6 +545,14 @@ class ScheduleTest extends TestCase
         $this->assertEquals($this->user->getMinutesOn('2018-06-02'), 0);
         $this->assertEquals($this->user->getMinutesOn('2018-06-03'), 0);
 
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn('2018-05-28'), 0);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn('2018-05-29'), 8 * 60);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn('2018-05-30'), 1 * 60);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn('2018-05-31'), 12 * 60);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn('2018-06-01'), 3 * 60);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn('2018-06-02'), 0);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn('2018-06-03'), 0);
+
         $this->assertEquals($this->user->getMinutesOn(Carbon::create(2018, 5, 28, 0, 0, 0)), 0);
         $this->assertEquals($this->user->getMinutesOn(Carbon::create(2018, 5, 29, 0, 0, 0)), 8 * 60);
         $this->assertEquals($this->user->getMinutesOn(Carbon::create(2018, 5, 30, 0, 0, 0)), 1 * 60);
@@ -510,6 +560,14 @@ class ScheduleTest extends TestCase
         $this->assertEquals($this->user->getMinutesOn(Carbon::create(2018, 6, 1, 0, 0, 0)), 3 * 60);
         $this->assertEquals($this->user->getMinutesOn(Carbon::create(2018, 6, 2, 0, 0, 0)), 0);
         $this->assertEquals($this->user->getMinutesOn(Carbon::create(2018, 6, 3, 0, 0, 0)), 0);
+
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn(Carbon::create(2018, 5, 28, 0, 0, 0)), 0);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn(Carbon::create(2018, 5, 29, 0, 0, 0)), 8 * 60);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn(Carbon::create(2018, 5, 30, 0, 0, 0)), 1 * 60);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn(Carbon::create(2018, 5, 31, 0, 0, 0)), 12 * 60);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn(Carbon::create(2018, 6, 1, 0, 0, 0)), 3 * 60);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn(Carbon::create(2018, 6, 2, 0, 0, 0)), 0);
+        $this->assertEquals($this->user->schedule()->first()->getMinutesOn(Carbon::create(2018, 6, 3, 0, 0, 0)), 0);
     }
 
     public function testDeleteExclusions()
