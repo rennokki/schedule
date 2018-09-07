@@ -373,7 +373,6 @@ class ScheduleTest extends TestCase
         $this->assertEquals($this->user->getHoursOn('2018-06-01'), 3);
         $this->assertEquals($this->user->getHoursOn('2018-06-02'), 0);
 
-
         $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-05-28'), 0);
         $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-05-31'), 12);
         $this->assertEquals($this->user->schedule()->first()->getHoursOn('2018-06-01'), 3);
