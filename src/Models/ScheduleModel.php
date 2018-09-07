@@ -17,4 +17,14 @@ class ScheduleModel extends Model
     {
         return $this->morphTo();
     }
+
+    public function getHoursOn($dateOrDay): int
+    {
+        return $this->model()->first()->getHoursOn($dateOrDay);
+    }
+
+    public function getMinutesOn($dateOrDay): int
+    {
+        return $this->model()->first()->getMinutesOn($dateOrDay);
+    }
 }
