@@ -57,7 +57,7 @@ class TimeRange
             return false;
         }
 
-        list($hour, $minute) = explode(':', $hourMinute);
+        [$hour, $minute] = explode(':', $hourMinute);
         $hour = (int) $hour;
         $minute = (int) $minute;
 
