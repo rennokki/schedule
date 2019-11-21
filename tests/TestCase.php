@@ -2,9 +2,9 @@
 
 namespace Rennokki\Schedule\Test;
 
-use Rennokki\Schedule\Test\Models\User;
-use Rennokki\Schedule\Models\ScheduleModel;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Rennokki\Schedule\Models\ScheduleModel;
+use Rennokki\Schedule\Test\Models\User;
 
 abstract class TestCase extends Orchestra
 {
