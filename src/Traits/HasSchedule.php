@@ -156,7 +156,7 @@ trait HasSchedule
      */
     public function isAvailableOn($dateOrDay): bool
     {
-        if (in_array($dateOrDay, Self::$availableDays)) {
+        if (in_array($dateOrDay, self::$availableDays)) {
             return (bool) (count($this->getSchedule()[$dateOrDay]) > 0);
         }
 
@@ -209,7 +209,7 @@ trait HasSchedule
     {
         $timeRanges = null;
 
-        if (in_array($dateOrDay, Self::$availableDays)) {
+        if (in_array($dateOrDay, self::$availableDays)) {
             $timeRanges = $this->getSchedule()[$dateOrDay];
         }
 
@@ -267,7 +267,7 @@ trait HasSchedule
         $totalHours = 0;
         $timeRanges = null;
 
-        if (in_array($dateOrDay, Self::$availableDays)) {
+        if (in_array($dateOrDay, self::$availableDays)) {
             $timeRanges = $this->getSchedule()[$dateOrDay];
         }
 
@@ -311,7 +311,7 @@ trait HasSchedule
         $totalMinutes = 0;
         $timeRanges = null;
 
-        if (in_array($dateOrDay, Self::$availableDays)) {
+        if (in_array($dateOrDay, self::$availableDays)) {
             $timeRanges = $this->getSchedule()[$dateOrDay];
         }
 
@@ -415,12 +415,12 @@ trait HasSchedule
     {
         $finalScheduleArray = [];
 
-        foreach (Self::$availableDays as $availableDay) {
+        foreach (self::$availableDays as $availableDay) {
             $finalScheduleArray[$availableDay] = [];
         }
 
         foreach ($scheduleArray as $day => $timeArray) {
-            if (! in_array($day, Self::$availableDays)) {
+            if (! in_array($day, self::$availableDays)) {
                 continue;
             }
 
